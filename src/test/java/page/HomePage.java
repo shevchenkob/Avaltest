@@ -11,9 +11,9 @@ public class HomePage {
     @FindBy(xpath = "//span[@class='menu-toggler__text']")
     private WebElement catalogue;
     @FindBy(xpath = "//a[@href='https://rozetka.com.ua/ua/notebooks/asus/c80004/v004/']")
-    private WebElement asusFolter;
+    private WebElement asusFolder;
     @FindBy(xpath = "//a[href='https://rozetka.com.ua/ua/notebooks/dell/c80004/v007/']")
-    private WebElement dellFolter;
+    private WebElement dellFolder;
 
     public WebElement getProducerFilter() {
         return producerFilter;
@@ -26,9 +26,11 @@ public class HomePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+public void notebooks () {
+    driver.get("https://rozetka.com.ua");
+    catalogue.click();
+    asusFolder.click();
 
-    public void clickShche() {
-        producerFilter.findElement(By.xpath(".//a[contains(text(),'Ще')]")).click();
-    }
+}
 
 }

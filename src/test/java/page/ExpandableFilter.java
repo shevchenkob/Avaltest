@@ -16,13 +16,13 @@ public abstract class ExpandableFilter {
 
     public ExpandableFilter(WebDriver driver) {
         this.driver = driver;
-        //PageFactory.initElements(driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     public ExpandableFilter(WebDriver driver, String filterName) {
         this.driver = driver;
         this.filterArea = driver.findElement(By.xpath(String.format(XPATH, filterName)));
-        //PageFactory.initElements(driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     public abstract void expand();

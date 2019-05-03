@@ -1,6 +1,9 @@
 package page;
 
+import okio.Timeout;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -15,14 +18,23 @@ public class HomePageTest {
     public void beforeMethod() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\shevchenko_b\\IdeaProjects\\qaauto-05.02.2019\\chromedriver.exe");
         driver = new ChromeDriver();
+        driver.get("https://rozetka.com.ua");
+
     }
 
     @Test
-    public void testHomePage() {
-        driver.get("https://rozetka.com.ua/ua/notebooks/c80004/filter/producer=asus/");
-        ExpandableFilter filter = new ExpandableFilterImpl(driver, "Процесор");
-        filter.expand();
-        System.out.println("12321321");
+    public void testHomePage() throws InterruptedException {
+        WebElement catalogue = driver.findElement(By.xpath("//span[@class='menu-toggler__text']"));
+        catalogue.click();
+        Thread.sleep(3000);
+        WebElement asus = driver.findElement(By.xpath("//a[contains(text(),'Asus')]"));
+        asus.click();
+        WebElement moreProcessors = driver.findElement(By.xpath(".//div[contains(@param, 'processor')]//a[@name='show_more_parameters']"));
+        moreProcessors.click();
+        //ExpandableFilter filter = new ExpandableFilterImpl(driver, "Процессор");
+        //filter.expand();
+
+
     }
 
 }

@@ -36,6 +36,21 @@ public class HomePageTest {
         Thread.sleep(3000);
         WebElement diagonal = driver.findElement(By.xpath("//a[@name='20861_6308']"));
         diagonal.click();
+        Thread.sleep(3000);
+        WebElement ram = driver.findElement(By.xpath("//a[@name='20863_48089']"));
+        ram.click();
+        Thread.sleep(3000);
+        WebElement minPrice = driver.findElement(By.xpath("//input[@id='price[min]']"));
+        minPrice.sendKeys("25000");
+        WebElement maxPrice = driver.findElement(By.xpath("//input[@id='price[max]']"));
+        maxPrice.sendKeys("55000");
+        WebElement submitPrice = driver.findElement(By.xpath("//button[@id='submitprice']"));
+        submitPrice.click();
+        Thread.sleep(3000);
+        WebElement product = driver.findElement(By.xpath("//div[@class='g-i-tile-i-title clearfix']"));
+        product.click();
+        WebElement buyButton = driver.findElement(By.xpath("//div[@class='toOrder ng-star-inserted']"));
+        buyButton.click();
 
         //ExpandableFilter filter = new ExpandableFilterImpl(driver, "Процессор");
         //filter.expand();

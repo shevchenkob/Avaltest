@@ -31,6 +31,12 @@ public class HomePageTest {
         asus.click();
         WebElement moreProcessors = driver.findElement(By.xpath(".//div[contains(@param, 'processor')]//a[@name='show_more_parameters']"));
         moreProcessors.click();
+        WebElement inteli7 = driver.findElement(By.xpath("//a[@name='processor_6268']"));
+        inteli7.click();
+        Thread.sleep(3000);
+        WebElement diagonal = driver.findElement(By.xpath("//a[@name='20861_6308']"));
+        diagonal.click();
+
         //ExpandableFilter filter = new ExpandableFilterImpl(driver, "Процессор");
         //filter.expand();
 

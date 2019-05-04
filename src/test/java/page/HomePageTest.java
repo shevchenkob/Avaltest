@@ -1,26 +1,40 @@
 package page;
 
-import okio.Timeout;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 
 public class HomePageTest {
 
     private static WebDriver driver;
     @BeforeClass
-    public void beforeMethod() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\shevchenko_b\\IdeaProjects\\qaauto-05.02.2019\\chromedriver.exe");
-        driver = new ChromeDriver();
+    public void setUp() throws Exception {
+        DesiredCapabilities capability = DesiredCapabilities.chrome();
+        driver = new RemoteWebDriver(new URL("http://192.168.56.1:4444/wd/hub"),
+                capability);
+        //baseUrl = "http://phy05:8080";
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(1920, 1080));
         driver.get("https://rozetka.com.ua");
-
     }
+
+//    public void beforeMethod() {
+//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\shevchenko_b\\IdeaProjects\\qaauto-05.02.2019\\chromedriver.exe");
+//        driver = new ChromeDriver();
+//        driver.get("https://rozetka.com.ua");
+//
+//    }
 
     @Test
     public void testHomePage() throws InterruptedException {
